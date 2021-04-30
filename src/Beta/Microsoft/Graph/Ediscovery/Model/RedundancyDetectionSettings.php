@@ -26,7 +26,7 @@ class RedundancyDetectionSettings extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the isEnabled
     *
-    * @return bool The isEnabled
+    * @return bool|null The isEnabled
     */
     public function getIsEnabled()
     {
@@ -52,7 +52,7 @@ class RedundancyDetectionSettings extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the maxWords
     *
-    * @return int The maxWords
+    * @return int|null The maxWords
     */
     public function getMaxWords()
     {
@@ -78,7 +78,7 @@ class RedundancyDetectionSettings extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the minWords
     *
-    * @return int The minWords
+    * @return int|null The minWords
     */
     public function getMinWords()
     {
@@ -104,7 +104,7 @@ class RedundancyDetectionSettings extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the similarityThreshold
     *
-    * @return int The similarityThreshold
+    * @return int|null The similarityThreshold
     */
     public function getSimilarityThreshold()
     {

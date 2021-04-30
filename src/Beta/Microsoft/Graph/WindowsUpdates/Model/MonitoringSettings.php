@@ -27,12 +27,12 @@ class MonitoringSettings extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the monitoringRules
     *
-    * @return MonitoringRule The monitoringRules
+    * @return MonitoringRule|null The monitoringRules
     */
     public function getMonitoringRules()
     {
         if (array_key_exists("monitoringRules", $this->_propDict)) {
-            if (is_a($this->_propDict["monitoringRules"], "\Beta\Microsoft\Graph\WindowsUpdates\Model\MonitoringRule")) {
+            if (is_a($this->_propDict["monitoringRules"], "\Beta\Microsoft\Graph\WindowsUpdates\Model\MonitoringRule") || is_null($this->_propDict["monitoringRules"])) {
                 return $this->_propDict["monitoringRules"];
             } else {
                 $this->_propDict["monitoringRules"] = new MonitoringRule($this->_propDict["monitoringRules"]);

@@ -26,7 +26,7 @@ class UserExperienceSettings extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the daysUntilForcedReboot
     *
-    * @return int The daysUntilForcedReboot
+    * @return int|null The daysUntilForcedReboot
     */
     public function getDaysUntilForcedReboot()
     {

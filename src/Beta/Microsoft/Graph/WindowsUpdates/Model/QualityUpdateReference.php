@@ -27,12 +27,12 @@ class QualityUpdateReference extends WindowsUpdateReference
     /**
     * Gets the classification
     *
-    * @return QualityUpdateClassification The classification
+    * @return QualityUpdateClassification|null The classification
     */
     public function getClassification()
     {
         if (array_key_exists("classification", $this->_propDict)) {
-            if (is_a($this->_propDict["classification"], "\Beta\Microsoft\Graph\WindowsUpdates\Model\QualityUpdateClassification")) {
+            if (is_a($this->_propDict["classification"], "\Beta\Microsoft\Graph\WindowsUpdates\Model\QualityUpdateClassification") || is_null($this->_propDict["classification"])) {
                 return $this->_propDict["classification"];
             } else {
                 $this->_propDict["classification"] = new QualityUpdateClassification($this->_propDict["classification"]);
@@ -58,12 +58,12 @@ class QualityUpdateReference extends WindowsUpdateReference
     /**
     * Gets the releaseDateTime
     *
-    * @return \DateTime The releaseDateTime
+    * @return \DateTime|null The releaseDateTime
     */
     public function getReleaseDateTime()
     {
         if (array_key_exists("releaseDateTime", $this->_propDict)) {
-            if (is_a($this->_propDict["releaseDateTime"], "\DateTime")) {
+            if (is_a($this->_propDict["releaseDateTime"], "\DateTime") || is_null($this->_propDict["releaseDateTime"])) {
                 return $this->_propDict["releaseDateTime"];
             } else {
                 $this->_propDict["releaseDateTime"] = new \DateTime($this->_propDict["releaseDateTime"]);

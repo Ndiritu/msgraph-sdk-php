@@ -26,7 +26,7 @@ class SearchAlterationOptions extends Entity
     /**
     * Gets the enableModification
     *
-    * @return bool The enableModification
+    * @return bool|null The enableModification
     */
     public function getEnableModification()
     {
@@ -52,7 +52,7 @@ class SearchAlterationOptions extends Entity
     /**
     * Gets the enableSuggestion
     *
-    * @return bool The enableSuggestion
+    * @return bool|null The enableSuggestion
     */
     public function getEnableSuggestion()
     {

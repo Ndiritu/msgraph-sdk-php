@@ -27,12 +27,12 @@ class DeploymentState extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the reasons
     *
-    * @return DeploymentStateReason The reasons
+    * @return DeploymentStateReason|null The reasons
     */
     public function getReasons()
     {
         if (array_key_exists("reasons", $this->_propDict)) {
-            if (is_a($this->_propDict["reasons"], "\Beta\Microsoft\Graph\WindowsUpdates\Model\DeploymentStateReason")) {
+            if (is_a($this->_propDict["reasons"], "\Beta\Microsoft\Graph\WindowsUpdates\Model\DeploymentStateReason") || is_null($this->_propDict["reasons"])) {
                 return $this->_propDict["reasons"];
             } else {
                 $this->_propDict["reasons"] = new DeploymentStateReason($this->_propDict["reasons"]);
@@ -58,12 +58,12 @@ class DeploymentState extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the requestedValue
     *
-    * @return RequestedDeploymentStateValue The requestedValue
+    * @return RequestedDeploymentStateValue|null The requestedValue
     */
     public function getRequestedValue()
     {
         if (array_key_exists("requestedValue", $this->_propDict)) {
-            if (is_a($this->_propDict["requestedValue"], "\Beta\Microsoft\Graph\WindowsUpdates\Model\RequestedDeploymentStateValue")) {
+            if (is_a($this->_propDict["requestedValue"], "\Beta\Microsoft\Graph\WindowsUpdates\Model\RequestedDeploymentStateValue") || is_null($this->_propDict["requestedValue"])) {
                 return $this->_propDict["requestedValue"];
             } else {
                 $this->_propDict["requestedValue"] = new RequestedDeploymentStateValue($this->_propDict["requestedValue"]);
@@ -89,12 +89,12 @@ class DeploymentState extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the value
     *
-    * @return DeploymentStateValue The value
+    * @return DeploymentStateValue|null The value
     */
     public function getValue()
     {
         if (array_key_exists("value", $this->_propDict)) {
-            if (is_a($this->_propDict["value"], "\Beta\Microsoft\Graph\WindowsUpdates\Model\DeploymentStateValue")) {
+            if (is_a($this->_propDict["value"], "\Beta\Microsoft\Graph\WindowsUpdates\Model\DeploymentStateValue") || is_null($this->_propDict["value"])) {
                 return $this->_propDict["value"];
             } else {
                 $this->_propDict["value"] = new DeploymentStateValue($this->_propDict["value"]);

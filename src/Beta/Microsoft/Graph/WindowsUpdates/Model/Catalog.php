@@ -28,7 +28,7 @@ class Catalog extends \Beta\Microsoft\Graph\Model\Entity
      /** 
      * Gets the entries
      *
-     * @return array The entries
+     * @return array|null The entries
      */
     public function getEntries()
     {
@@ -48,7 +48,7 @@ class Catalog extends \Beta\Microsoft\Graph\Model\Entity
     */
     public function setEntries($val)
     {
-		$this->_propDict["entries"] = $val;
+        $this->_propDict["entries"] = $val;
         return $this;
     }
     

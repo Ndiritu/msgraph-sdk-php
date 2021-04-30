@@ -39,7 +39,10 @@ class Admin implements \JsonSerializable
     */
     function __construct($propDict = array())
     {
-		$this->_propDict = $propDict;
+        if (!is_array($propDict)) {
+           $propDict = array();
+        }
+        $this->_propDict = $propDict;
     }
 
     /**
@@ -55,12 +58,12 @@ class Admin implements \JsonSerializable
     /**
     * Gets the windows
     *
-    * @return Windows The windows
+    * @return Windows|null The windows
     */
     public function getWindows()
     {
         if (array_key_exists("windows", $this->_propDict)) {
-            if (is_a($this->_propDict["windows"], "\Beta\Microsoft\Graph\WindowsUpdates\Model\Windows")) {
+            if (is_a($this->_propDict["windows"], "\Beta\Microsoft\Graph\WindowsUpdates\Model\Windows") || is_null($this->_propDict["windows"])) {
                 return $this->_propDict["windows"];
             } else {
                 $this->_propDict["windows"] = new Windows($this->_propDict["windows"]);
@@ -108,7 +111,7 @@ class Admin implements \JsonSerializable
     
     /**
     * Serializes the object by property array
-	* Manually serialize DateTime into RFC3339 format
+    * Manually serialize DateTime into RFC3339 format
     *
     * @return array The list of properties
     */

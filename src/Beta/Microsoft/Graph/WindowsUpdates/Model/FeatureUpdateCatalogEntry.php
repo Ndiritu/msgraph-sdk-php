@@ -27,7 +27,7 @@ class FeatureUpdateCatalogEntry extends SoftwareUpdateCatalogEntry
     /**
     * Gets the version
     *
-    * @return string The version
+    * @return string|null The version
     */
     public function getVersion()
     {

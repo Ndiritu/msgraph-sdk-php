@@ -27,12 +27,12 @@ class MonitoringRule extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the action
     *
-    * @return MonitoringAction The action
+    * @return MonitoringAction|null The action
     */
     public function getAction()
     {
         if (array_key_exists("action", $this->_propDict)) {
-            if (is_a($this->_propDict["action"], "\Beta\Microsoft\Graph\WindowsUpdates\Model\MonitoringAction")) {
+            if (is_a($this->_propDict["action"], "\Beta\Microsoft\Graph\WindowsUpdates\Model\MonitoringAction") || is_null($this->_propDict["action"])) {
                 return $this->_propDict["action"];
             } else {
                 $this->_propDict["action"] = new MonitoringAction($this->_propDict["action"]);
@@ -58,12 +58,12 @@ class MonitoringRule extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the signal
     *
-    * @return MonitoringSignal The signal
+    * @return MonitoringSignal|null The signal
     */
     public function getSignal()
     {
         if (array_key_exists("signal", $this->_propDict)) {
-            if (is_a($this->_propDict["signal"], "\Beta\Microsoft\Graph\WindowsUpdates\Model\MonitoringSignal")) {
+            if (is_a($this->_propDict["signal"], "\Beta\Microsoft\Graph\WindowsUpdates\Model\MonitoringSignal") || is_null($this->_propDict["signal"])) {
                 return $this->_propDict["signal"];
             } else {
                 $this->_propDict["signal"] = new MonitoringSignal($this->_propDict["signal"]);
@@ -88,7 +88,7 @@ class MonitoringRule extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the threshold
     *
-    * @return int The threshold
+    * @return int|null The threshold
     */
     public function getThreshold()
     {

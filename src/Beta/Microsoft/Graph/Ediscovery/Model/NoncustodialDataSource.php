@@ -27,7 +27,7 @@ class NoncustodialDataSource extends DataSourceContainer
     /**
     * Gets the applyHoldToSource
     *
-    * @return bool The applyHoldToSource
+    * @return bool|null The applyHoldToSource
     */
     public function getApplyHoldToSource()
     {
@@ -54,12 +54,12 @@ class NoncustodialDataSource extends DataSourceContainer
     /**
     * Gets the dataSource
     *
-    * @return DataSource The dataSource
+    * @return DataSource|null The dataSource
     */
     public function getDataSource()
     {
         if (array_key_exists("dataSource", $this->_propDict)) {
-            if (is_a($this->_propDict["dataSource"], "\Beta\Microsoft\Graph\Ediscovery\Model\DataSource")) {
+            if (is_a($this->_propDict["dataSource"], "\Beta\Microsoft\Graph\Ediscovery\Model\DataSource") || is_null($this->_propDict["dataSource"])) {
                 return $this->_propDict["dataSource"];
             } else {
                 $this->_propDict["dataSource"] = new DataSource($this->_propDict["dataSource"]);

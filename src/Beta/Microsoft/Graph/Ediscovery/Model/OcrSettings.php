@@ -26,7 +26,7 @@ class OcrSettings extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the isEnabled
     *
-    * @return bool The isEnabled
+    * @return bool|null The isEnabled
     */
     public function getIsEnabled()
     {
@@ -52,7 +52,7 @@ class OcrSettings extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the maxImageSize
     *
-    * @return int The maxImageSize
+    * @return int|null The maxImageSize
     */
     public function getMaxImageSize()
     {
@@ -79,12 +79,12 @@ class OcrSettings extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the timeout
     *
-    * @return \Beta\Microsoft\Graph\Model\Duration The timeout
+    * @return \Beta\Microsoft\Graph\Model\Duration|null The timeout
     */
     public function getTimeout()
     {
         if (array_key_exists("timeout", $this->_propDict)) {
-            if (is_a($this->_propDict["timeout"], "\Beta\Microsoft\Graph\Model\Duration")) {
+            if (is_a($this->_propDict["timeout"], "\Beta\Microsoft\Graph\Model\Duration") || is_null($this->_propDict["timeout"])) {
                 return $this->_propDict["timeout"];
             } else {
                 $this->_propDict["timeout"] = new \Beta\Microsoft\Graph\Model\Duration($this->_propDict["timeout"]);

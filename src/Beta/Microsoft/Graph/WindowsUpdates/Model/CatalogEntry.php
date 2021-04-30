@@ -27,12 +27,12 @@ class CatalogEntry extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the deployableUntilDateTime
     *
-    * @return \DateTime The deployableUntilDateTime
+    * @return \DateTime|null The deployableUntilDateTime
     */
     public function getDeployableUntilDateTime()
     {
         if (array_key_exists("deployableUntilDateTime", $this->_propDict)) {
-            if (is_a($this->_propDict["deployableUntilDateTime"], "\DateTime")) {
+            if (is_a($this->_propDict["deployableUntilDateTime"], "\DateTime") || is_null($this->_propDict["deployableUntilDateTime"])) {
                 return $this->_propDict["deployableUntilDateTime"];
             } else {
                 $this->_propDict["deployableUntilDateTime"] = new \DateTime($this->_propDict["deployableUntilDateTime"]);
@@ -58,7 +58,7 @@ class CatalogEntry extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the displayName
     *
-    * @return string The displayName
+    * @return string|null The displayName
     */
     public function getDisplayName()
     {
@@ -85,12 +85,12 @@ class CatalogEntry extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the releaseDateTime
     *
-    * @return \DateTime The releaseDateTime
+    * @return \DateTime|null The releaseDateTime
     */
     public function getReleaseDateTime()
     {
         if (array_key_exists("releaseDateTime", $this->_propDict)) {
-            if (is_a($this->_propDict["releaseDateTime"], "\DateTime")) {
+            if (is_a($this->_propDict["releaseDateTime"], "\DateTime") || is_null($this->_propDict["releaseDateTime"])) {
                 return $this->_propDict["releaseDateTime"];
             } else {
                 $this->_propDict["releaseDateTime"] = new \DateTime($this->_propDict["releaseDateTime"]);

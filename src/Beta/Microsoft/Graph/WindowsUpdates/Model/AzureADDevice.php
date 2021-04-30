@@ -28,7 +28,7 @@ class AzureADDevice extends UpdatableAsset
      /** 
      * Gets the enrollments
      *
-     * @return array The enrollments
+     * @return array|null The enrollments
      */
     public function getEnrollments()
     {
@@ -48,7 +48,7 @@ class AzureADDevice extends UpdatableAsset
     */
     public function setEnrollments($val)
     {
-		$this->_propDict["enrollments"] = $val;
+        $this->_propDict["enrollments"] = $val;
         return $this;
     }
     
@@ -56,7 +56,7 @@ class AzureADDevice extends UpdatableAsset
      /** 
      * Gets the errors
      *
-     * @return array The errors
+     * @return array|null The errors
      */
     public function getErrors()
     {
@@ -76,7 +76,7 @@ class AzureADDevice extends UpdatableAsset
     */
     public function setErrors($val)
     {
-		$this->_propDict["errors"] = $val;
+        $this->_propDict["errors"] = $val;
         return $this;
     }
     

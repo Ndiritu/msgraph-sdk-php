@@ -26,7 +26,7 @@ class TopicModelingSettings extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the dynamicallyAdjustTopicCount
     *
-    * @return bool The dynamicallyAdjustTopicCount
+    * @return bool|null The dynamicallyAdjustTopicCount
     */
     public function getDynamicallyAdjustTopicCount()
     {
@@ -52,7 +52,7 @@ class TopicModelingSettings extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the ignoreNumbers
     *
-    * @return bool The ignoreNumbers
+    * @return bool|null The ignoreNumbers
     */
     public function getIgnoreNumbers()
     {
@@ -78,7 +78,7 @@ class TopicModelingSettings extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the isEnabled
     *
-    * @return bool The isEnabled
+    * @return bool|null The isEnabled
     */
     public function getIsEnabled()
     {
@@ -104,7 +104,7 @@ class TopicModelingSettings extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the topicCount
     *
-    * @return int The topicCount
+    * @return int|null The topicCount
     */
     public function getTopicCount()
     {

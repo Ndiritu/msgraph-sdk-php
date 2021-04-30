@@ -36,12 +36,12 @@ class UpdateManagementEnrollment extends UpdatableAssetEnrollment
     /**
     * Gets the updateCategory
     *
-    * @return UpdateCategory The updateCategory
+    * @return UpdateCategory|null The updateCategory
     */
     public function getUpdateCategory()
     {
         if (array_key_exists("updateCategory", $this->_propDict)) {
-            if (is_a($this->_propDict["updateCategory"], "\Beta\Microsoft\Graph\WindowsUpdates\Model\UpdateCategory")) {
+            if (is_a($this->_propDict["updateCategory"], "\Beta\Microsoft\Graph\WindowsUpdates\Model\UpdateCategory") || is_null($this->_propDict["updateCategory"])) {
                 return $this->_propDict["updateCategory"];
             } else {
                 $this->_propDict["updateCategory"] = new UpdateCategory($this->_propDict["updateCategory"]);

@@ -27,12 +27,12 @@ class Deployment extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the content
     *
-    * @return DeployableContent The content
+    * @return DeployableContent|null The content
     */
     public function getContent()
     {
         if (array_key_exists("content", $this->_propDict)) {
-            if (is_a($this->_propDict["content"], "\Beta\Microsoft\Graph\WindowsUpdates\Model\DeployableContent")) {
+            if (is_a($this->_propDict["content"], "\Beta\Microsoft\Graph\WindowsUpdates\Model\DeployableContent") || is_null($this->_propDict["content"])) {
                 return $this->_propDict["content"];
             } else {
                 $this->_propDict["content"] = new DeployableContent($this->_propDict["content"]);
@@ -58,12 +58,12 @@ class Deployment extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the createdDateTime
     *
-    * @return \DateTime The createdDateTime
+    * @return \DateTime|null The createdDateTime
     */
     public function getCreatedDateTime()
     {
         if (array_key_exists("createdDateTime", $this->_propDict)) {
-            if (is_a($this->_propDict["createdDateTime"], "\DateTime")) {
+            if (is_a($this->_propDict["createdDateTime"], "\DateTime") || is_null($this->_propDict["createdDateTime"])) {
                 return $this->_propDict["createdDateTime"];
             } else {
                 $this->_propDict["createdDateTime"] = new \DateTime($this->_propDict["createdDateTime"]);
@@ -89,12 +89,12 @@ class Deployment extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the lastModifiedDateTime
     *
-    * @return \DateTime The lastModifiedDateTime
+    * @return \DateTime|null The lastModifiedDateTime
     */
     public function getLastModifiedDateTime()
     {
         if (array_key_exists("lastModifiedDateTime", $this->_propDict)) {
-            if (is_a($this->_propDict["lastModifiedDateTime"], "\DateTime")) {
+            if (is_a($this->_propDict["lastModifiedDateTime"], "\DateTime") || is_null($this->_propDict["lastModifiedDateTime"])) {
                 return $this->_propDict["lastModifiedDateTime"];
             } else {
                 $this->_propDict["lastModifiedDateTime"] = new \DateTime($this->_propDict["lastModifiedDateTime"]);
@@ -120,12 +120,12 @@ class Deployment extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the settings
     *
-    * @return DeploymentSettings The settings
+    * @return DeploymentSettings|null The settings
     */
     public function getSettings()
     {
         if (array_key_exists("settings", $this->_propDict)) {
-            if (is_a($this->_propDict["settings"], "\Beta\Microsoft\Graph\WindowsUpdates\Model\DeploymentSettings")) {
+            if (is_a($this->_propDict["settings"], "\Beta\Microsoft\Graph\WindowsUpdates\Model\DeploymentSettings") || is_null($this->_propDict["settings"])) {
                 return $this->_propDict["settings"];
             } else {
                 $this->_propDict["settings"] = new DeploymentSettings($this->_propDict["settings"]);
@@ -151,12 +151,12 @@ class Deployment extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the state
     *
-    * @return DeploymentState The state
+    * @return DeploymentState|null The state
     */
     public function getState()
     {
         if (array_key_exists("state", $this->_propDict)) {
-            if (is_a($this->_propDict["state"], "\Beta\Microsoft\Graph\WindowsUpdates\Model\DeploymentState")) {
+            if (is_a($this->_propDict["state"], "\Beta\Microsoft\Graph\WindowsUpdates\Model\DeploymentState") || is_null($this->_propDict["state"])) {
                 return $this->_propDict["state"];
             } else {
                 $this->_propDict["state"] = new DeploymentState($this->_propDict["state"]);
@@ -182,12 +182,12 @@ class Deployment extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Gets the audience
     *
-    * @return DeploymentAudience The audience
+    * @return DeploymentAudience|null The audience
     */
     public function getAudience()
     {
         if (array_key_exists("audience", $this->_propDict)) {
-            if (is_a($this->_propDict["audience"], "\Beta\Microsoft\Graph\WindowsUpdates\Model\DeploymentAudience")) {
+            if (is_a($this->_propDict["audience"], "\Beta\Microsoft\Graph\WindowsUpdates\Model\DeploymentAudience") || is_null($this->_propDict["audience"])) {
                 return $this->_propDict["audience"];
             } else {
                 $this->_propDict["audience"] = new DeploymentAudience($this->_propDict["audience"]);

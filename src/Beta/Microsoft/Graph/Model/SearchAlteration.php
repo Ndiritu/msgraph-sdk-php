@@ -26,7 +26,7 @@ class SearchAlteration extends Entity
     /**
     * Gets the alteredHighlightedQueryString
     *
-    * @return string The alteredHighlightedQueryString
+    * @return string|null The alteredHighlightedQueryString
     */
     public function getAlteredHighlightedQueryString()
     {
@@ -52,7 +52,7 @@ class SearchAlteration extends Entity
     /**
     * Gets the alteredQueryString
     *
-    * @return string The alteredQueryString
+    * @return string|null The alteredQueryString
     */
     public function getAlteredQueryString()
     {
@@ -79,12 +79,12 @@ class SearchAlteration extends Entity
     /**
     * Gets the alteredQueryTokens
     *
-    * @return AlteredQueryToken The alteredQueryTokens
+    * @return AlteredQueryToken|null The alteredQueryTokens
     */
     public function getAlteredQueryTokens()
     {
         if (array_key_exists("alteredQueryTokens", $this->_propDict)) {
-            if (is_a($this->_propDict["alteredQueryTokens"], "\Beta\Microsoft\Graph\Model\AlteredQueryToken")) {
+            if (is_a($this->_propDict["alteredQueryTokens"], "\Beta\Microsoft\Graph\Model\AlteredQueryToken") || is_null($this->_propDict["alteredQueryTokens"])) {
                 return $this->_propDict["alteredQueryTokens"];
             } else {
                 $this->_propDict["alteredQueryTokens"] = new AlteredQueryToken($this->_propDict["alteredQueryTokens"]);
