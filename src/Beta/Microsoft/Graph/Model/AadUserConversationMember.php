@@ -13,6 +13,7 @@
 */
 namespace Beta\Microsoft\Graph\Model;
 
+
 /**
 * AadUserConversationMember class
 *
