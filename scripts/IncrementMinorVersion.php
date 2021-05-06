@@ -1,19 +1,11 @@
 <?php
 
 /**
-<<<<<<< HEAD
  * Bumps up the minor version in src/Core/GraphConstants.php & README based on the latest published package version on Packagist
  * 
  * Assumptions:
  *  - Script is run from the repo root
  *  - Script is run on a Unix environment (affects file path separator to files)
-=======
- * Bumps up the minor version in src/Core/GraphConstants.php based on the latest published package version on Packagist
- * 
- * Assumptions:
- *  - Script is run from the repo root
- *  - Script is run on a Unix OS (affects file path separator to GraphConstants.php)
->>>>>>> 32427403... Bump SDK minor version before code-gen PRs for beta and v1 are created
  *  - Packagist returns tagged versions in descending order (latest release first)
 */
 
@@ -82,7 +74,6 @@ function updateGraphConstants(string $version)
     throw new Exception("Could not read GraphConstants.php at ". CONSTANTS_FILEPATH);
 }
 
-<<<<<<< HEAD
 function updateReadMe(string $version)
 {
     $path = "./README.md";
@@ -103,8 +94,3 @@ $version = incrementMinorVersion(getLatestPackagistVersion());
 echo "Version after minor increment: {$version}\n";
 updateGraphConstants($version);
 updateReadMe($version);
-=======
-$version = incrementMinorVersion(getLatestPackagistVersion());
-echo "Version after minor increment: {$version}\n";
-updateGraphConstants($version);
->>>>>>> 32427403... Bump SDK minor version before code-gen PRs for beta and v1 are created
