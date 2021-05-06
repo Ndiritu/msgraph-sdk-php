@@ -13,6 +13,8 @@
 */
 namespace Beta\Microsoft\Graph\ExternalConnectors\Model;
 /**
+ * 
+ * 
 * Acl class
 *
 * @category  Model
