@@ -61,6 +61,7 @@ class Admin implements \JsonSerializable
     /**
      * 
      * 
+     * 
     * Gets the windows
     * Entity that acts as a container for functionality. Read-only.
     *
