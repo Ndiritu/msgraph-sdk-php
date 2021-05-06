@@ -17,6 +17,7 @@ namespace Beta\Microsoft\Graph\WindowsUpdates\Model;
 
 
 
+
 /**
 * Admin class
 *
