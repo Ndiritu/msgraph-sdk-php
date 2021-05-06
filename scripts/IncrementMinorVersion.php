@@ -94,3 +94,4 @@ $version = incrementMinorVersion(getLatestPackagistVersion());
 echo "Version after minor increment: {$version}\n";
 updateGraphConstants($version);
 updateReadMe($version);
+throw new Exception("Forcing failure");
