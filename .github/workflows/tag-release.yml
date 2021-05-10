@@ -28,7 +28,7 @@ jobs:
 
     - name: Create tag if not exists
       run: | 
-        git tag $SDK_VERSION && git push origin $SDK_VERSION
+        git tag $SDK_VERSION && git push --tags
         
 
 
