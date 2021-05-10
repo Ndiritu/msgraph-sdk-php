@@ -28,6 +28,7 @@ jobs:
 
     - name: Create tag if not exists
       run: | 
+        echo 'sdk version still is:'$SDK_VERSION
         git tag $SDK_VERSION && git push --tags
         
 
