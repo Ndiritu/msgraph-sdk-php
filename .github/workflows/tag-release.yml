@@ -3,7 +3,7 @@
 
 # Adds a tag to main after a PR is merged succesfully.
 
-name: "tag dev branch"
+name: "tag release"
 
 on:
   push:
