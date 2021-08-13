@@ -16,6 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
       - uses: docker://phpdoc/phpdoc:3.0
         with:
           target: docs/
@@ -29,12 +31,7 @@ jobs:
           git config --global user.email "GraphTooling@service.microsoft.com"
           git config --global user.name "Microsoft Graph DevX Tooling"
 
-      - name: Check Git status
-        run: |
-          git status
-          git add .
-
       - name: Commit changes to docs/ folder (if any)
         run: |
           git add .
-          if git commit -m "Update docs/"; then git push -v origin $GITHUB_REF; fi
+          if git commit -vm "Update docs/"; then git push -v origin $GITHUB_HEAD_REF; fi
