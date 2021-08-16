@@ -14,13 +14,15 @@ defaults:
 jobs:
   run-php-documentor:
     runs-on: ubuntu-latest
+    env:
+      BRANCH: fix/update-docs
     steps:
       - uses: actions/checkout@v2.3.4
         with:
           ref: ${{ github.ref }}
 
       - name: Create new branch
-        run: git checkout -b fix/update-docs
+        run: git checkout -b ${{ env.BRANCH }}
 
       - uses: docker://phpdoc/phpdoc:3.0
         with:
@@ -36,13 +38,13 @@ jobs:
           git config --global user.name "Microsoft Graph DevX Tooling"
 
       - name: Commit changes to docs/ folder (if any)
-        id: 1
+        id: 'commit-step'
         run: |
           git add .
-          if git commit -vm "Update docs/"; then git push -v origin fix/update-docs; fi
+          if git commit -vm "Update docs/"; then git push -v origin ${{ env.BRANCH }}; fi
       
       - name: Create PR
-        if: ${{ steps.1.outcome == 'success' }}
+        if: ${{ steps.commit-step.outcome == 'success' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MESSAGE_TITLE: Generated Docs update using PHPDocumentor
