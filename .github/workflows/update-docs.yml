@@ -43,7 +43,7 @@ jobs:
         id: 'commit-step'
         run: |
           git add .
-          if git status --porcelain; then git commit -m "Update docs/" && git push origin ${{ env.BRANCH }}; else ${{ env.CREATE_PR = 'true' }}; fi
+          if git status --porcelain; then git commit -m "Update docs/" && git push origin ${{ env.BRANCH }} && ${{ env.CREATE_PR = 'true' }}; fi
       
       - name: Create PR
         if: ${{ env.CREATE_PR == 'true' }}
