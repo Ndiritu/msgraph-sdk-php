@@ -91,7 +91,7 @@ class GraphRequest
     /**
     * The timeout, in seconds
     *
-    * @var string
+    * @var int
     */
     protected $timeout;
     /**
