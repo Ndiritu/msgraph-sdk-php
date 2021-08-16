@@ -23,7 +23,7 @@ jobs:
 
       - name: Create or checkout docs branch
         run: |
-          if! git fetch origin ${{ env.BRANCH }}; then git checkout -b ${{ env.BRANCH }}; else git checkout ${{ env.BRANCH }}; fi
+          if git fetch origin ${{ env.BRANCH }}; then git checkout ${{ env.BRANCH }}; else git checkout -b ${{ env.BRANCH }}; fi
 
       - uses: docker://phpdoc/phpdoc:3.0
         with:
