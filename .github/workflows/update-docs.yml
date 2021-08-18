@@ -21,16 +21,16 @@ jobs:
         with:
           ref: ${{ github.ref }}
 
+      - uses: docker://phpdoc/phpdoc:3.0
+        with:
+          target: docs/
+          config: ./phpdoc.dist.xml
+
       - name: Create unique docs branch name
         run: echo "BRANCH=fix/update-docs/$(date +%s)" >> $GITHUB_ENV
 
       - name: Create and checkout docs branch
         run: git checkout -b ${{ env.BRANCH }}
-
-      - uses: docker://phpdoc/phpdoc:3.0
-        with:
-          target: docs/
-          config: ./phpdoc.dist.xml
 
       - name: Run PHPDocumentor container
         run: docker run --name phpDoc --rm -v $(pwd):/data phpdoc/phpdoc:3.0 run
@@ -41,16 +41,15 @@ jobs:
           git config --global user.name "Microsoft Graph DevX Tooling"
 
       - name: Commit changes to docs/ folder (if any)
-        id: 'commit-step'
         run: |
-          if git add . && git commit -m "Update docs/"; then git push origin ${{ env.BRANCH }} && echo "CREATE_PR=true" >> $GITHUB_ENV; fi
+          git add . && git commit -m "Update docs/ folder" && git push origin ${{ env.BRANCH }} && echo "CREATE_PR=true" >> $GITHUB_ENV
       
       - name: Create PR
         if: ${{ env.CREATE_PR }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          MESSAGE_TITLE: Generated Docs update using PHPDocumentor
-          MESSAGE_BODY: "This pull request was automatically created."
+          MESSAGE_TITLE: Generated docs using PHPDocumentor
+          MESSAGE_BODY: "This pull request was automatically created by GitHub Action `${{ github.workflow }}`. \n\n The action runs PHPDocumentor against the latest changes merged to `${{ github.ref }}`."
           LABELS: generated
         run: |
           curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
