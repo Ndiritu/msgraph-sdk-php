@@ -12,7 +12,9 @@ jobs:
   test-job:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "CREATE_PR=true" >> $GITHUB_ENV
+      - run: |
+          echo "CREATE_PR=true" >> $GITHUB_ENV
+          echo "CREATE_PR="$CREATE_PR
       - name: Final step
         if: ${{ env.CREATE_PR == true }}
         run: echo "Run final step"
