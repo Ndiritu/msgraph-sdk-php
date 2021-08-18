@@ -41,7 +41,7 @@ jobs:
 
       - name: Commit changes to docs/ folder (if any)
         run: |
-          git add . && git commit -m "Update docs/ folder" && git push origin ${{ env.BRANCH }} && echo "CREATE_PR=true" >> $GITHUB_ENV
+          if git add . && git commit -m "Update docs/ folder"; then git push origin ${{ env.BRANCH }} && echo "CREATE_PR=true" >> $GITHUB_ENV; else echo "No PR to be created"; fi
       
       - name: Create PR
         if: ${{ env.CREATE_PR }}
