@@ -304,7 +304,7 @@ class GraphRequest
     * @throws \GuzzleHttp\Exception\GuzzleException
     *
     * @return mixed object or array of objects
-    *         of class $returnType
+    *         of class
     */
     public function execute($client = null)
     {
