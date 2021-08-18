@@ -15,7 +15,7 @@ jobs:
   run-php-documentor:
     runs-on: ubuntu-latest
     env:
-      CREATE_PR: 'false'
+      CREATE_PR: 0
     steps:
       - uses: actions/checkout@v2.3.4
         with:
@@ -41,10 +41,10 @@ jobs:
 
       - name: Commit changes to docs/ folder (if any)
         run: |
-          if git add . && git commit -m "Update docs/ folder"; then git push origin ${{ env.BRANCH }} && echo "CREATE_PR='true'" >> $GITHUB_ENV; else echo "No PR to be created"; fi
+          if git add . && git commit -m "Update docs/ folder"; then git push origin ${{ env.BRANCH }} && echo "CREATE_PR=1" >> $GITHUB_ENV; fi
       
       - name: Create PR
-        if: ${{ env.CREATE_PR == 'true' }}
+        if: ${{ env.CREATE_PR == 1 }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MESSAGE_TITLE: Generated docs using PHPDocumentor
