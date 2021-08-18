@@ -37,7 +37,7 @@ abstract class Enum
     private $_value;
 
     /**
-    * Create a new enum
+    * Create a new enum type
     *
     * @param string $value The value of the enum
      *
