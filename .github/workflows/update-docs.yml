@@ -23,7 +23,6 @@ jobs:
 
       - uses: docker://phpdoc/phpdoc:3.0
         with:
-          target: docs/
           config: ./phpdoc.dist.xml
 
       - name: Create unique docs branch name
