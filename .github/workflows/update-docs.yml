@@ -44,7 +44,7 @@ jobs:
           if git add . && git commit -m "Update docs/ folder"; then git push origin ${{ env.BRANCH }} && echo "CREATE_PR=${{ true }}" >> $GITHUB_ENV; else echo "No PR to be created"; fi
       
       - name: Create PR
-        if: ${{ env.CREATE_PR }}
+        if: ${{ env.CREATE_PR == true }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MESSAGE_TITLE: Generated docs using PHPDocumentor
