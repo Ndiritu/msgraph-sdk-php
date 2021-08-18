@@ -299,7 +299,7 @@ class GraphRequest
     /**
     * Executes the HTTP request using Guzzle
     *
-    * @param mixed $client The client to use in the request
+    * @param mixed $client The Guzzle client to use in the request
     *
     * @throws \GuzzleHttp\Exception\GuzzleException
     *
