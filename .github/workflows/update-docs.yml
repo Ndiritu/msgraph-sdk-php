@@ -21,10 +21,11 @@ jobs:
         with:
           ref: ${{ github.ref }}
 
+      - name: Create unique docs branch name
+        run: echo "BRANCH=fix/update-docs/$(date +%s)" >> $GITHUB_ENV
+
       - name: Create and checkout docs branch
-        run: |
-          echo "BRANCH=fix/update-docs/$(date +%s)" >> $GITHUB_ENV
-          git checkout -b ${{ env.BRANCH }}
+        run: git checkout -b ${{ env.BRANCH }}
 
       - uses: docker://phpdoc/phpdoc:3.0
         with:
