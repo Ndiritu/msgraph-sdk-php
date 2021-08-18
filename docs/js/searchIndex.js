@@ -8,7 +8,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Microsoft\\Graph\\Core\\Enum\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "Create\u0020a\u0020new\u0020enum",
+            "summary": "Create\u0020a\u0020new\u0020enum\u0020type",
             "url": "classes/Microsoft-Graph-Core-Enum.html#method___construct"
         },                {
             "fqsen": "\\Microsoft\\Graph\\Core\\Enum\u003A\u003Ahas\u0028\u0029",
