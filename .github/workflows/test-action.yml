@@ -17,4 +17,4 @@ jobs:
           echo "CREATE_PR="${{ env.CREATE_PR }}
           
       - name: Final step
-        run: ${{ env.CREATE_PR }} && echo "Run final step"
+        run: if ${{ env.CREATE_PR }}; then echo "Run final step"; fi
