@@ -13,7 +13,8 @@ jobs:
     env:
       CREATE_PR: ${{ false }}
     runs-on: ubuntu-latest
-    steps:    
+    steps:
+      - run: echo "CREATE_PR='true'" >> $GITHUB_ENV
       - name: Final step
         if: ${{ env.CREATE_PR == 'true' }}
         run: echo "Creating the PR"
