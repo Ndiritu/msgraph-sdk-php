@@ -33,7 +33,7 @@ class ExceptionWrapper
      * Wrap Guzzle BadResponseException which returns truncated exception messages for 4xx and 5xx responses.
      * Adds response body to the exception message.
      *
-     * @param BadResponseException $ex
+     * @param BadResponseException $ex exception
      * @return BadResponseException containing HTTP response from Graph API
      */
     public static function wrapGuzzleBadResponseException(BadResponseException $ex)
