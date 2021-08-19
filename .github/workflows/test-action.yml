@@ -15,5 +15,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:    
       - name: Final step
-        if: ${{ env.CREATE_PR }}
+        if: ${{ env.CREATE_PR == 'true' }}
         run: echo "Creating the PR"
