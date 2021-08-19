@@ -14,5 +14,5 @@ jobs:
     steps:
       - run: echo "CREATE_PR=false" >> $GITHUB_ENV
       - name: Final step
-        if: env.CREATE_PR
+        if: env.CREATE_PR == true
         run: echo "Creating the PR"
