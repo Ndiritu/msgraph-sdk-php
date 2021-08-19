@@ -12,7 +12,7 @@ jobs:
   test-job:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "CREATE_PR=true" >> $GITHUB_ENV
+      - run: echo "CREATE_PR=false" >> $GITHUB_ENV
       - name: Final step
         if: env.CREATE_PR
         run: echo "Creating the PR"
