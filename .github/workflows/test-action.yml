@@ -10,11 +10,9 @@ defaults:
     
 jobs:
   test-job:
-    env:
-      CREATE_PR: ${{ false }}
     runs-on: ubuntu-latest
     steps:
-      - run: ${{ env.CREATE_PR='true' }}
+      - run: echo "::set-env name=CREATE_PR::true"
       - name: Final step
-        if: ${{ env.CREATE_PR == 'true' }}
+        if: env.CREATE_PR
         run: echo "Creating the PR"
