@@ -3,7 +3,7 @@ Search.appendIndex(
                 {
             "fqsen": "\\Microsoft\\Graph\\Core\\Enum",
             "name": "Enum",
-            "summary": "Class\u0020Enum",
+            "summary": "Class\u0020Enum\nchange",
             "url": "classes/Microsoft-Graph-Core-Enum.html"
         },                {
             "fqsen": "\\Microsoft\\Graph\\Core\\Enum\u003A\u003A__construct\u0028\u0029",
