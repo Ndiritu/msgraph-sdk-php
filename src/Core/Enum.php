@@ -20,7 +20,7 @@ use Microsoft\Graph\Exception\GraphException;
 
 /**
  * Class Enum
- *
+ * change
  * @category Library
  * @package  Microsoft.Graph
  * @license  https://opensource.org/licenses/MIT MIT License
