@@ -40,7 +40,7 @@ jobs:
           echo "NEXT_STEP=$NEXT_STEP" >> $GITHUB_ENV
 
       - name: Commit and push changes if any
-        run: git commit -am "Bump core library dependency version"
+        run: if git commit -am "Bump core library dependency version"; fi
 
   bump-sdk-version:
     needs: update-core-dependency
