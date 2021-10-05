@@ -13,8 +13,7 @@
 	],
 	"require": {
 		"php": "^8.0 || ^7.3",
-		"guzzlehttp/guzzle": "^6.0 || ^7.0",
-		"ext-json": "*"
+		"microsoft/microsoft-graph-core": "dev-dev"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "^9.0",

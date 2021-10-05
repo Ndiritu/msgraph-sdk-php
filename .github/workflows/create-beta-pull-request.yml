@@ -2,7 +2,7 @@
 # Licensed under the MIT License.
 
 # This action will automatically create a pull request against dev if the pushed branch
-# has a branch path spec likev 1.0/pipelinebuild/*. Configure this action by updating the
+# has a branch path spec like beta/pipelinebuild/*. Configure this action by updating the
 # environment variable values[0].
 
 name: "create beta pull request"
@@ -10,12 +10,13 @@ name: "create beta pull request"
 # Controls when the action will run. Triggers the workflow on push
 # events but only for branches with the following branch spec: "beta/pipelinebuild/*"
 on:
+  workflow_dispatch:
   push:
     branches:
       - "beta/pipelinebuild/*"
     paths:
-      - 'src/Beta/**/*.php'
-      - '!src/Core/GraphConstants.php'
+      - 'src/**/*.php'
+      - '!src/GraphConstants.php'
 
 defaults:
   run:
@@ -23,24 +24,48 @@ defaults:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  bump-minor-version:
+  update-core-dependency:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Git config user
+        run: |
+          git config --global user.email "GraphTooling@service.microsoft.com"
+          git config --global user.name "Microsoft Graph DevX Tooling"
+
+      - name: Update Core Library Version
+        run: |
+          NEXT_STEP=$(php scripts/BumpCoreLibraryVersion.php)
+          echo "NEXT_STEP=$NEXT_STEP" >> $GITHUB_ENV
+
+      - name: Commit and push changes if any
+        run: git commit -am "Bump core library dependency version"
+
+  bump-sdk-version:
+    needs: update-core-dependency
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    
+
     - name: Git config user
       run: |
         git config --global user.email "GraphTooling@service.microsoft.com"
         git config --global user.name "Microsoft Graph DevX Tooling"
-    
-    - name: Run increment script
-      run: php scripts/IncrementMinorVersion.php
+
+    - name: Bump minor version
+      if: ${{ env.NEXT_STEP == 'MINOR_REV' }}
+      run: php scripts/BumpCoreLibraryVersion MINOR_REV
+
+    - name: Bump minor version
+      if: ${{ env.NEXT_STEP == 'MAJOR_REV' }}
+      run: php scripts/BumpCoreLibraryVersion MAJOR_REV
 
     - name: Commit and push changes if any
-      run: if git commit -am "Bump up minor version"; then git push origin $GITHUB_REF; fi
-        
+      run: if git commit -am "Bump sdk version"; then git push origin $GITHUB_REF; fi
+
   create-pull-request:
-    needs: bump-minor-version
+    needs: bump-sdk-version
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     # https://github.com/actions/virtual-environments/blob/master/images/linux/Ubuntu1804-README.md
