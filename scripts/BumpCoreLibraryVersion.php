@@ -29,7 +29,7 @@ echo "CurrentCoreVersion: {$currentCoreVersion}.";
 
 
 // $latestCoreVersion = getLatestPackagistVersion(PACKAGE_NAME);
-$latestCoreVersion = "2.0.1-preview";
+$latestCoreVersion = "2.2.1-preview";
 
 echo "Latest core version: {$latestCoreVersion}.";
 
