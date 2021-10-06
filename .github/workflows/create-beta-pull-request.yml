@@ -40,14 +40,14 @@ jobs:
         echo $LOGS
         NEXT_STEP=$(echo $LOGS | egrep -o "(MAJOR_REV_SDK_VERSION|MINOR_REV_SDK_VERSION)")
         echo "NEXT_STEP=$NEXT_STEP" >> $GITHUB_ENV
-        git commit -am "Bump Core version"
+        git commit -am "Bump Core version" || echo "No changes to commit"
 
     - name: Bump sdk version
       run: php scripts/BumpSdkVersion.php ${{ env.NEXT_STEP }}
 
     - name: Commit and push changes if any
       run: if git commit -am "Bump sdk version"; then git push origin $GITHUB_REF; fi
-      
+
   create-pull-request:
     needs: bump-sdk-version
     # The type of runner that the job will run on
