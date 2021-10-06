@@ -56,7 +56,7 @@ jobs:
         git config --global user.name "Microsoft Graph DevX Tooling"
 
     - name: Bump sdk version
-      run: php scripts/BumpCoreLibraryVersion ${{ env.NEXT_STEP }}
+      run: php scripts/BumpCoreLibraryVersion.php ${{ env.NEXT_STEP }}
 
     - name: Commit and push changes if any
       run: if git commit -am "Bump sdk version"; then git push origin $GITHUB_REF; fi
