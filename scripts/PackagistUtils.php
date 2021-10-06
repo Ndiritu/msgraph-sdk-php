@@ -40,7 +40,8 @@ function getLatestPackagistVersion(string $packageName): ?string
         || !array_key_exists("versions", $responseJson["package"])
         || empty($responseJson["package"]["versions"])) {
 
-        exit("Unable to find versions in the packagist response JSON: ". $responseJson);
+        echo "Unable to find versions in the packagist response JSON: ". $responseJson;
+        return null;
     }
 
     $versions = $responseJson["package"]["versions"];

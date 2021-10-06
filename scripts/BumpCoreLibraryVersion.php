@@ -24,9 +24,13 @@ if (!preg_match(COMPOSER_JSON_CORE_REGEX, $composerJsonContents, $matches)) {
 }
 $currentCoreVersion = $matches[1];
 
+echo "CurrentCoreVersion: {$currentCoreVersion}.";
+
 
 // $latestCoreVersion = getLatestPackagistVersion(PACKAGE_NAME);
 $latestCoreVersion = "2.0.0-preview";
+
+echo "Latest core version: {$latestCoreVersion}.";
 
 if (!$latestCoreVersion) {
     exit("No non-branch version of the Core Library is available on Packagist");
