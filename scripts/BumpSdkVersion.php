@@ -71,7 +71,7 @@ if (!$latestVersion) {
     exit("No version found on Packagist for: ".PACKAGE_NAME."\n");
 }
 
-$version = ($argv[1] === 'MAJOR_REV') ? incrementMajorVersion($latestVersion) : incrementMinorVersion($latestVersion);
+$version = ($argv[1] === 'MAJOR_REV_SDK_VERSION') ? incrementMajorVersion($latestVersion) : incrementMinorVersion($latestVersion);
 echo "Version after increment: {$version}\n";
 updateGraphConstants($version);
 updateReadMe($version);

@@ -38,7 +38,7 @@ jobs:
         run: |
           LOGS=$(php scripts/BumpCoreLibraryVersion.php)
           echo $LOGS
-          NEXT_STEP=$(echo $LOGS | egrep -o "(MAJOR_REV|MINOR_REV)")
+          NEXT_STEP=$(echo $LOGS | egrep -o "(MAJOR_REV_SDK_VERSION|MINOR_REV_SDK_VERSION)")
           echo "NEXT_STEP=$NEXT_STEP" >> $GITHUB_ENV
 
       - name: Commit and push changes if any
@@ -55,13 +55,8 @@ jobs:
         git config --global user.email "GraphTooling@service.microsoft.com"
         git config --global user.name "Microsoft Graph DevX Tooling"
 
-    - name: Bump minor version
-      if: ${{ env.NEXT_STEP == 'MINOR_REV' }}
-      run: php scripts/BumpCoreLibraryVersion MINOR_REV
-
-    - name: Bump major version
-      if: ${{ env.NEXT_STEP == 'MAJOR_REV' }}
-      run: php scripts/BumpCoreLibraryVersion MAJOR_REV
+    - name: Bump sdk version
+      run: php scripts/BumpCoreLibraryVersion ${{ env.NEXT_STEP }}
 
     - name: Commit and push changes if any
       run: if git commit -am "Bump sdk version"; then git push origin $GITHUB_REF; fi

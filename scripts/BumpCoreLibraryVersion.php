@@ -23,12 +23,13 @@ if (!preg_match(COMPOSER_JSON_CORE_REGEX, $composerJsonContents, $matches)) {
    exit("Could not find Core Library dependency in composer.json using regex: ".COMPOSER_JSON_CORE_REGEX);
 }
 $currentCoreVersion = $matches[1];
+$currentCoreVersion = ($currentCoreVersion[0] === "^") ? substr($currentCoreVersion, 1) : $currentCoreVersion;
 
 echo "CurrentCoreVersion: {$currentCoreVersion}.";
 
 
 // $latestCoreVersion = getLatestPackagistVersion(PACKAGE_NAME);
-$latestCoreVersion = "2.0.0-preview";
+$latestCoreVersion = "2.0.1-preview";
 
 echo "Latest core version: {$latestCoreVersion}.";
 
@@ -46,7 +47,6 @@ if (!file_put_contents(
 
 // output informs GitHub Action whether to bump minor SDK version or bump major SDK version
 if (intval($latestCoreVersion[0]) > intval($currentCoreVersion[0])) {
-    exit("MAJOR_REV");
-} else {
-    exit("MINOR_REV");
+    exit("MAJOR_REV_SDK_VERSION");
 }
+exit("MINOR_REV_SDK_VERSION");
