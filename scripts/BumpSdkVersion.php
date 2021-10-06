@@ -13,7 +13,7 @@
 */
 require_once 'PackagistUtils.php';
 
-const CONSTANTS_FILEPATH = "./src/GraphConstants.php";
+const CONSTANTS_FILEPATH = "./src/Core/GraphConstants.php";
 const SDK_VERSION_VAR_NAME = "SDK_VERSION"; # Name of version variable in GraphConstants.php
 const PACKAGE_NAME = "microsoft-graph";
 const CONSTANTS_README_FILEPATH = "./README.md";
@@ -42,12 +42,12 @@ function updateGraphConstants(string $version)
         $pattern = '/'. SDK_VERSION_VAR_NAME . '\s+=\s+".+"/';
         $replacement = SDK_VERSION_VAR_NAME . ' = "' . $version . '"';
         if (!file_put_contents(CONSTANTS_FILEPATH, preg_replace($pattern, $replacement, $fileContents))) {
-            exit("Unable to find and replace SDK version variable ". SDK_VERSION_VAR_NAME);
+            throw new \Exception("Unable to find and replace SDK version variable ". SDK_VERSION_VAR_NAME);
         }
         echo "Successfully updated " . CONSTANTS_FILEPATH . "\n";
         return;
     }
-    exit("Could not read GraphConstants.php at ". CONSTANTS_FILEPATH);
+    throw new \Exception("Could not read GraphConstants.php at ". CONSTANTS_FILEPATH);
 }
 
 function updateReadMe(string $version)
@@ -57,12 +57,12 @@ function updateReadMe(string $version)
         $pattern = sprintf('/"microsoft\/%s":\s+".+"/', PACKAGE_NAME);
         $replacement = sprintf("\"microsoft/%s\": \"^{$version}\"", PACKAGE_NAME);
         if (!file_put_contents(CONSTANTS_README_FILEPATH, preg_replace($pattern, $replacement, $fileContents))) {
-            exit("Unable to find and replace SDK version");
+            throw new \Exception("Unable to find and replace SDK version");
         }
         echo "Successfully updated README\n";
         return;
     }
-   exit("Could not read README.md at " . CONSTANTS_README_FILEPATH);
+   throw new \Exception("Could not read README.md at " . CONSTANTS_README_FILEPATH);
 }
 
 //$latestVersion = getLatestPackagistVersion(PACKAGE_NAME);

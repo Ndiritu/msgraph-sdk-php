@@ -15,12 +15,12 @@ const COMPOSER_JSON_CORE_REGEX = '#"microsoft/'. PACKAGE_NAME . '"\s*:\s*"(.+)"#
 
 $composerJsonContents = file_get_contents(COMPOSER_JSON_PATH);
 if (!$composerJsonContents) {
-    exit("Could not read composer.json at: ".COMPOSER_JSON_PATH);
+    throw new \Exception("Could not read composer.json at: ".COMPOSER_JSON_PATH);
 }
 
 $matches = [];
 if (!preg_match(COMPOSER_JSON_CORE_REGEX, $composerJsonContents, $matches)) {
-   exit("Could not find Core Library dependency in composer.json using regex: ".COMPOSER_JSON_CORE_REGEX);
+   throw new \Exception("Could not find Core Library dependency in composer.json using regex: ".COMPOSER_JSON_CORE_REGEX);
 }
 $currentCoreVersion = $matches[1];
 $currentCoreVersion = ($currentCoreVersion[0] === "^") ? substr($currentCoreVersion, 1) : $currentCoreVersion;
@@ -42,7 +42,7 @@ if (!file_put_contents(
     COMPOSER_JSON_PATH,
     preg_replace(COMPOSER_JSON_CORE_REGEX, $replacement, $composerJsonContents))) {
 
-    exit("Unable to overwrite Core library version in composer.json");
+    throw new \Exception("Unable to overwrite Core library version in composer.json");
 }
 
 // output informs GitHub Action whether to bump minor SDK version or bump major SDK version

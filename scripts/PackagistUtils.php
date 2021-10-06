@@ -30,7 +30,7 @@ function getLatestPackagistVersion(string $packageName): ?string
     $response = curl_exec($handle);
 
     if (curl_error($handle)) {
-        exit("Failed to get latest packagist version: ". curl_error($handle));
+        throw new \Exception("Failed to get latest packagist version: ". curl_error($handle));
     }
 
     curl_close($handle);
